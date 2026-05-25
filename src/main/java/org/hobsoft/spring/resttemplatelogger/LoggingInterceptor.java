@@ -14,7 +14,6 @@
 package org.hobsoft.spring.resttemplatelogger;
 
 import java.io.IOException;
-
 import org.apache.commons.logging.Log;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
@@ -24,46 +23,28 @@ import org.springframework.http.client.ClientHttpResponse;
 /**
  * {@code ClientHttpRequestInterceptor} that logs request and response bodies.
  */
-public class LoggingInterceptor implements ClientHttpRequestInterceptor
-{
-	// ----------------------------------------------------------------------------------------------------------------
-	// fields
-	// ----------------------------------------------------------------------------------------------------------------
-	
-	private final Log log;
-	
-	private final LogFormatter formatter;
-	
-	// ----------------------------------------------------------------------------------------------------------------
-	// constructors
-	// ----------------------------------------------------------------------------------------------------------------
-	
-	public LoggingInterceptor(Log log, LogFormatter formatter)
-	{
-		this.log = log;
-		this.formatter = formatter;
-	}
-	
-	// ----------------------------------------------------------------------------------------------------------------
-	// ClientHttpRequestInterceptor methods
-	// ----------------------------------------------------------------------------------------------------------------
-	
-	@Override
-	public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution)
-		throws IOException
-	{
-		if (log.isDebugEnabled())
-		{
-			log.debug(formatter.formatRequest(request, body));
-		}
-		
-		ClientHttpResponse response = execution.execute(request, body);
-		
-		if (log.isDebugEnabled())
-		{
-			log.debug(formatter.formatResponse(response));
-		}
-		
-		return response;
-	}
+public class LoggingInterceptor implements ClientHttpRequestInterceptor {
+
+    // ----------------------------------------------------------------------------------------------------------------
+    // fields
+    // ----------------------------------------------------------------------------------------------------------------
+    private final Log log;
+
+    private final LogFormatter formatter;
+
+    // ----------------------------------------------------------------------------------------------------------------
+    // constructors
+    // ----------------------------------------------------------------------------------------------------------------
+    public LoggingInterceptor(Log log, LogFormatter formatter) {
+        this.log = log;
+        this.formatter = formatter;
+    }
+
+    // ----------------------------------------------------------------------------------------------------------------
+    // ClientHttpRequestInterceptor methods
+    // ----------------------------------------------------------------------------------------------------------------
+    @Override
+    public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

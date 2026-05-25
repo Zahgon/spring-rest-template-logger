@@ -22,44 +22,36 @@ import org.springframework.web.client.RestTemplate;
 /**
  * {@code RestTemplateCustomizer} that configures the {@code RestTemplate} to log requests and responses.
  */
-public class LoggingCustomizer implements RestTemplateCustomizer
-{
-	// ----------------------------------------------------------------------------------------------------------------
-	// fields
-	// ----------------------------------------------------------------------------------------------------------------
-	
-	private final Log log;
-	
-	private final LogFormatter formatter;
-	
-	// ----------------------------------------------------------------------------------------------------------------
-	// constructors
-	// ----------------------------------------------------------------------------------------------------------------
-	
-	public LoggingCustomizer()
-	{
-		this(LogFactory.getLog(LoggingCustomizer.class));
-	}
-	
-	public LoggingCustomizer(Log log)
-	{
-		this(log, new DefaultLogFormatter());
-	}
-	
-	public LoggingCustomizer(Log log, LogFormatter formatter)
-	{
-		this.log = log;
-		this.formatter = formatter;
-	}
-	
-	// ----------------------------------------------------------------------------------------------------------------
-	// RestTemplateCustomizer methods
-	// ----------------------------------------------------------------------------------------------------------------
-	
-	@Override
-	public void customize(RestTemplate restTemplate)
-	{
-		restTemplate.setRequestFactory(new BufferingClientHttpRequestFactory(restTemplate.getRequestFactory()));
-		restTemplate.getInterceptors().add(new LoggingInterceptor(log, formatter));
-	}
+public class LoggingCustomizer implements RestTemplateCustomizer {
+
+    // ----------------------------------------------------------------------------------------------------------------
+    // fields
+    // ----------------------------------------------------------------------------------------------------------------
+    private final Log log;
+
+    private final LogFormatter formatter;
+
+    // ----------------------------------------------------------------------------------------------------------------
+    // constructors
+    // ----------------------------------------------------------------------------------------------------------------
+    public LoggingCustomizer() {
+        this(LogFactory.getLog(LoggingCustomizer.class));
+    }
+
+    public LoggingCustomizer(Log log) {
+        this(log, new DefaultLogFormatter());
+    }
+
+    public LoggingCustomizer(Log log, LogFormatter formatter) {
+        this.log = log;
+        this.formatter = formatter;
+    }
+
+    // ----------------------------------------------------------------------------------------------------------------
+    // RestTemplateCustomizer methods
+    // ----------------------------------------------------------------------------------------------------------------
+    @Override
+    public void customize(RestTemplate restTemplate) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }
